@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.3)
+cmake_minimum_required(VERSION 3.8.0)
 project(opengv VERSION 1.0 LANGUAGES CXX)
 
 # Set the build type.  Options are:
@@ -181,9 +181,8 @@ add_library( random_generators test/random_generators.cpp test/random_generators
 set_target_properties( opengv random_generators PROPERTIES
                     SOVERSION ${PROJECT_VERSION}
                     VERSION ${PROJECT_VERSION}
-                    CXX_STANDARD 11
-                    CXX_STANDARD_REQUIRED ON
                     DEBUG_POSTFIX d )
+target_compile_features(opengv PUBLIC cxx_std_11)
 
 target_include_directories( opengv PUBLIC 
                 # only when building from the source tree
@@ -329,8 +328,6 @@ IF (BUILD_TESTS)
     test_Sturm
 
     PROPERTIES
-    CXX_STANDARD 11
-    CXX_STANDARD_REQUIRED ON
     DEBUG_POSTFIX d )
 
 
